@@ -9,7 +9,7 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-default-secret-key')  # Replace with an environment variable
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-default-secret-key')  # Replace with an environment variable
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -72,8 +72,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Use environment variable
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Use environment variable
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Use environment variable
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Use environment variable
 
 DATABASES = {
     "default": {
@@ -115,22 +115,22 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         'OAUTH_PKCE_ENABLED': True,
         'APP': {
-            #'client_id': os.getenv('GOOGLE_CLIENT_ID'),  # Google OAuth Client ID from environment variable
-            #'secret': os.getenv('GOOGLE_CLIENT_SECRET'),  # Google OAuth Client Secret from environment variable
+            'client_id': os.getenv('GOOGLE_CLIENT_ID'),  # Google OAuth Client ID from environment variable
+            'secret': os.getenv('GOOGLE_CLIENT_SECRET'),  # Google OAuth Client Secret from environment variable
         }
     }
 }
 
-# STATIC_URL = "/static/"
-# STATIC_ROOT = BASE_DIR / "static"
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "static"
 
-# DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# SITE_ID = 1
-# LOGIN_REDIRECT_URL = "/"
-# LOGIN_URL = "/accounts/login/"
-# LOGOUT_REDIRECT_URL = "/accounts/login/"
+SITE_ID = 1
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL = "/accounts/login/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
