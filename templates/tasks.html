@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}My Tasks{% endblock %}
+{% block content %}
+<div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">My Tasks</h2>
+    <a href="/create-task/" class="bg-green-500 text-white px-4 py-2 rounded">Add Task</a>
+</div>
+<form method="get" class="mb-6">
+    <input type="text" name="search" placeholder="Search tasks..." class="border p-2 rounded w-full">
+</form>
+<div class="bg-white rounded shadow">
+    <ul>
+        {% for task in tasks %}
+        <li class="p-4 border-b">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="text-lg font-bold">{{ task.title }}</h3>
+                    <p>{{ task.description }}</p>
+                </div>
+                <div>
+                    <a href="/update-task/{{ task.id }}/" class="text-blue-600 hover:underline mr-4">Edit</a>
+                    <a href="/delete-task/{{ task.id }}/" class="text-red-600 hover:underline">Delete</a>
+                </div>
+            </div>
+        </li>
+        {% empty %}
+        <li class="p-4 text-center text-gray-500">No tasks found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

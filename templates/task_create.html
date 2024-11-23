@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Create Task{% endblock %}
+{% block content %}
+<div class="max-w-lg mx-auto bg-white p-6 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Create Task</h2>
+
+    {% if form.errors %}
+        <div class="mb-4 p-4 bg-red-100 text-red-700 rounded">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>{{ field|capfirst }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+            Create Task
+        </button>
+    </form>
+</div>
+{% endblock %}
